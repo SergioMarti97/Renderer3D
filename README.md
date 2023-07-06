@@ -161,6 +161,10 @@ public class Visualizer extends Application {
 }
 ```
 
+## Como utilizarlo
+
+Si quieres usar el código de este repositorio, puedes descargar el repositorio y utilizar directamente las clases, o bien puedes añadir como librería externa el artifact del proyecto.
+
 ## Capturas:
 
 Aquí se muestran algunas capturas del funcionamiento del renderizador.
