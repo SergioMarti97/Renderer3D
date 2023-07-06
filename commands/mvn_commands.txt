@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile= C:\Users\Sergio\IdeaProjects\java-3d-rendering\target\artifacts\java_3d_rendering_jar\java-3d-rendering.jar -DgroupId=sergio.marti -DartifactId=java-3d-rendering -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DgeneratePom=true
