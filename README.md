@@ -89,74 +89,67 @@ Resto de clases:
 Aquí se muestra una implementación en una aplicación JavaFX de este renderizador.
 
 ```java
-import engine.PipeLine;
-import engine.RenderFlags;
-import engine.material.Texture;
-import engine.mesh.Mesh;
-import engine.mesh.MeshFactory;
-import engine.mesh.Model;
-import engine.transforms.Rotation;
-import engine.transforms.Transform;
-import engine.transforms.Translation;
+import org.render3d.PipeLine;
+import org.render3d.mesh.Mesh;
+import org.render3d.mesh.MeshFactory;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Visualizer extends Application {
 
-    // Settings of the application
+  // Settings of the application
 
-    private String appName = "Visualizer";
+  private String appName = "Visualizer";
 
-    private int width = 800;
+  private int width = 800;
 
-    private int height = 600;
+  private int height = 600;
 
-    // Scene layout
+  // Scene layout
 
-    private WritableImage img;
+  private WritableImage img;
 
-    // 3D Render class
+  // 3D Render class
 
-    private PipeLine pipeLine;
+  private PipeLine pipeLine;
 
-    private Mesh mesh;
-    
-    @Override
-    public void start(Stage stage) throws Exception {
-        // Setting the 3D render
-        pipeLine = new PipeLine(width, height);
-        mesh = MeshFactory.getUnitCube();
-        
-        // Setting the image view
-        img = new WritableImage(width, height);
+  private Mesh mesh;
 
-        ImageView imageView = new ImageView(img);
-        imageView.setFocusTraversable(true);
+  @Override
+  public void start(Stage stage) throws Exception {
+    // Setting the 3D render
+    pipeLine = new PipeLine(width, height);
+    mesh = MeshFactory.getUnitCube();
 
-        StackPane pane = new StackPane(imageView);
+    // Setting the image view
+    img = new WritableImage(width, height);
 
-        imageView.fitWidthProperty().bind(pane.widthProperty());
-        imageView.fitHeightProperty().bind(pane.heightProperty());
+    ImageView imageView = new ImageView(img);
+    imageView.setFocusTraversable(true);
 
-        // Rendering the 3D mesh
-        pipeLine.getRenderer3D().clear(0xff000000);
-        pipeLine.renderMesh(mesh, 0xff00aaff);
-        pipeLine.clearDepthBuffer();
-        pipeLine.getRenderer3D().writeImage(img);
+    StackPane pane = new StackPane(imageView);
 
-        // Set the scene
-        Scene scene = new Scene(pane, width, height);
-        stage.setScene(scene);
-        stage.setTitle(appName);
+    imageView.fitWidthProperty().bind(pane.widthProperty());
+    imageView.fitHeightProperty().bind(pane.heightProperty());
 
-        // Show the scene
-        stage.show();
-    }
+    // Rendering the 3D mesh
+    pipeLine.getRenderer3D().clear(0xff000000);
+    pipeLine.renderMesh(mesh, 0xff00aaff);
+    pipeLine.clearDepthBuffer();
+    pipeLine.getRenderer3D().writeImage(img);
+
+    // Set the scene
+    Scene scene = new Scene(pane, width, height);
+    stage.setScene(scene);
+    stage.setTitle(appName);
+
+    // Show the scene
+    stage.show();
+  }
 
 }
 ```

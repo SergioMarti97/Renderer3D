@@ -1,0 +1,13 @@
+package org.render3d;
+
+public enum RenderFlags {
+
+    RENDER_WIRE,
+    RENDER_FLAT,
+    RENDER_SMOOTH_FLAT,
+    RENDER_TEXTURED,
+    RENDER_FULL_TEXTURED,
+    RENDER_TEXTURED_SHADOW,
+    RENDER_FULL_TEXTURED_SHADOW,
+
+}
